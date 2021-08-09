@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@4/distr/fira_code.css');
+
+body {
+  --fonts: "Fira Code VF", "IBM Plex Mono";
+  font-family: var(--fonts);
+  color: black;
+  background: #eee;
+  text-align: center;
+  --yes: #0fbf4dfd;
+  --prismic: #5bb498;
+  --no: #d11c0f;
+  --misc: #e9c810;
+} a {
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  div.content > a {
+    color: var(--prismic) !important;
+    text-decoration: underline;
+  } nav > &.options {
+    font-size: 20px;
+    margin-right: 36px;
+    margin-top: 7px;
+    text-shadow: 0px 0px 6px black;
+    &.curr {
+      color: var(--yes) !important;
+      text-shadow: 0px 0px 6px var(--yes) !important;
+      pointer-events: none;
+    } &.wip {
+      color: var(--no) !important;
+      text-shadow: 0px 0px 6px var(--no) !important;
+      cursor: not-allowed;
+    }
+  }
+} nav {
+  text-align: right !important;
+} h1 {
+  &.title {
+    font-size: 50px;
+    margin: 34px 0px;
+    padding-top: 6px;
+  } & > span.highl {
+    color: var(--prismic) !important;
+    text-shadow: 0px 0px 6px var(--prismic);
+  }
+} button {
+  font-size: 17px;
+  padding: 15px 32px;
+  border: none;
+  color: black;
+  text-align: center;
+  border-radius: 50px;
+  transition: background 215ms !important;
+  margin-bottom: 15px;
+  font-family: var(--fonts) !important;
+  &, & > a {
+    text-decoration: none;
+    background: #605f57 !important;
+  } &:active {
+    background: var(--yes);
+  } &.help {
+    cursor: help;
+  }
+} div {
+  &.post {
+    margin: auto;
+    width: 60%;
+    border: 3px solid black;
+    // border-bottom: 0px !important;
+    padding: 10px;
+    & > [class], div.con > [class] {
+      text-align: left;
+    } & > div.title {
+      font-size: 25px;
+      text-align: center !important;
+    } & > div.content {
+      margin-top: 10px;
+      color: #111 !important;
+      text-shadow: 0px 0px 2px #111;
+      /* overflow magic */
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    } @at-root div#head, & {
+      & > div.con {
+        display: flex;
+        flex-flow: row wrap;
+        & > div.avatar {
+          &, & > svg {
+            width: 20px;
+            height: 20px;
+          }
+        } & > div.author {
+          color: #448 !important;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-shadow: 0px 0px 2px black;
+        } & > div.timestamp {
+          margin-left: auto;
+          color: #111;
+          text-shadow: 0px 0px 2px #111;
+          font-size: 12px;
+        }
+      }
+    }
+  } &.account {
+    display: flex;
+    flex-flow: column wrap;
+    height: 256px;
+    margin-bottom: 12px;
+    & > div.picture {
+      order: -1;
+      width: 256px;
+      height: 256px;
+      margin-left: auto;
+      padding-right: 12px;
+    } & > div.name {
+      order: 0;
+      height: 75px;
+      font-size: 70px;
+      text-align: left;
+      width: auto;
+    } & > textarea.bio {
+      order: 1;
+      text-align: left;
+      height: 170px; 
+      resize: none;
+      width: 30%;
+      flex-basis: auto;
+    }
+  }
+} [class*="CodeMirror"] {
+  text-align: left !important;
+  font-family: var(--fonts) !important;
+  font-size: 15px;
+} pre, code {
+  color: var(--no);
+  background: #272822;
+}

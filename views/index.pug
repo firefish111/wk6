@@ -1,0 +1,34 @@
+doctype strict
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title Chatapp
+    link(rel="stylesheet" href="/style/main.css")
+    link(rel="icon" href="favicon.svg")
+    script(src="/socket.io/socket.io.js")
+  body
+    //
+      nav
+        a.options.curr Home
+        a.options(href="/post") Post
+        a.options(href="/account") My Profile
+    h1.title
+      span.highl Chat
+    div
+      div.post
+        div.con
+          div.author courtney
+          div.timestamp= new Date(694206942069420).toLocaleString()
+        div.title hey
+        div.content yo momma so dumb she thought courtney was as smart as albert einstein
+  script(type="module").
+    import { getSVG } from "./decode.js";
+    const sock = io();
+    document.querySelectorAll("div.avatar[publisher]").forEach(async usr => {
+      console.log(usr);
+      let pub = usr.getAttribute("publisher");
+      console.log(pub);
+      sock.emit("getUsr", pub, prismic => {
+        usr.innerHTML = getSVG(prismic);
+      });
+    });
